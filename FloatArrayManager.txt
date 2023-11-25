@@ -1,0 +1,8 @@
+insertValue
+setValue
+getAverage
+getMax
+getMin
+getArray
+printValues
+toString

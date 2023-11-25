@@ -1,7 +1,3 @@
-//
-// Created by adam.howell on 2023-11-24.
-//
-
 #ifndef T_DISPLAY_S3_SHT40_FLOATARRAYMANAGER_H
 #define T_DISPLAY_S3_SHT40_FLOATARRAYMANAGER_H
 
@@ -20,29 +16,16 @@ private:
   float *arrayValues;
 
 public:
-  /**
-   * Constructor
-   * @param size the number of elements the array should hold.
-   */
   explicit FloatArrayManager( int size );
-
-  // Destructor to free the allocated memory
   ~FloatArrayManager();
-
   void insertValue( float value );
-
   void setValue( int index, float value );
-
-  // Function to get the average value in the array.
   float getAverage();
-
-  // Function to get the maximum value in the array.
   float getMax();
-
-  // Function to get the minimum value in the array.
   float getMin();
-
+  float[] getArray();
   void printValues();
+  String toString();
 };
 
 #endif //T_DISPLAY_S3_SHT40_FLOATARRAYMANAGER_H

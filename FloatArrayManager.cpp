@@ -1,4 +1,13 @@
+/**
+ * FloatArrayManager is a class meant to help averaging values.
+ * The constructor takes an integer representing the array size.
+ * Values can be set explicitly, or added sequentially.
+ * The insertValue() method moves each value from its current index to index+1, then saves the new value to index 0.
+ */
+
+
 #include "FloatArrayManager.h"
+
 
 /**
  * Constructor.
@@ -10,6 +19,7 @@ FloatArrayManager::FloatArrayManager( int size )
   arrayValues = new float[arraySize];
 }
 
+
 /**
  * Destructor to free the allocated memory.
  */
@@ -17,6 +27,7 @@ FloatArrayManager::~FloatArrayManager()
 {
   delete[] arrayValues;
 }
+
 
 /**
  * Move each value from its current index to index+1, then save the new value to index 0.
@@ -33,6 +44,7 @@ void FloatArrayManager::insertValue( float value )
   arrayValues[0] = value;
 }
 
+
 /**
  * Set the value at a specific index.
  */
@@ -43,6 +55,7 @@ void FloatArrayManager::setValue( int index, float value )
     arrayValues[index] = value;
   }
 }
+
 
 /**
  * Function to get the average value in the array.
@@ -56,6 +69,7 @@ float FloatArrayManager::getAverage()
   }
   return sum / arraySize;
 }
+
 
 /**
  * Function to get the maximum value in the array.
@@ -73,6 +87,7 @@ float FloatArrayManager::getMax()
   return maxValue;
 }
 
+
 /**
  * Function to get the minimum value in the array.
  */
@@ -89,10 +104,45 @@ float FloatArrayManager::getMin()
   return minValue;
 }
 
+
+/**
+ * Return the array of values.
+ * Use this when you want to do your own toString() or manual data manipulation.
+ */
+float[] FloatArrayManager::getArray()
+{
+  return arrayValues;
+}
+
+
+/**
+ * Function to print each value in the array after its index.
+ */
 void FloatArrayManager::printValues()
 {
   for( int i = 0; i < arraySize; i++ )
   {
     Serial.printf( "%d: %f\n", i, arrayValues[i] );
   }
+}
+
+
+/**
+ * Return the array as a string.
+ * @return the values of the array in a String.
+ */
+String FloatArrayManager::toString()
+{
+  String returnString = String();
+  returnString += "[";
+  bool subsequent = false;
+  for( int i = 0; i < arraySize; ++i )
+  {
+    if( subsequent )
+      returnString += ", "
+    returnString += arrayValues[i];
+    subsequent = true;
+  }
+  returnString += "]";
+  return returnString;
 }
