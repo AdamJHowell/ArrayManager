@@ -1,19 +1,19 @@
 /**
- * FloatArrayManager is a class meant to help averaging values.
+ * ArrayManager is a class meant to help averaging values.
  * The constructor takes an integer representing the array size.
  * Values can be set explicitly, or added sequentially.
  * The insertValue() method moves each value from its current index to index+1, then saves the new value to index 0.
  */
 
 
-#include "FloatArrayManager.h"
+#include "ArrayManager.h"
 
 
 /**
  * Constructor.
  * @param size the number of elements the array should hold.
  */
-FloatArrayManager::FloatArrayManager( int size )
+ArrayManager::ArrayManager( int size )
 {
   arraySize = size;
   arrayValues = new float[arraySize];
@@ -23,7 +23,7 @@ FloatArrayManager::FloatArrayManager( int size )
 /**
  * Destructor to free the allocated memory.
  */
-FloatArrayManager::~FloatArrayManager()
+ArrayManager::~ArrayManager()
 {
   delete[] arrayValues;
 }
@@ -33,7 +33,7 @@ FloatArrayManager::~FloatArrayManager()
  * Move each value from its current index to index+1, then save the new value to index 0.
  * @param value the value to insert into the array.
  */
-void FloatArrayManager::insertValue( float value )
+void ArrayManager::insertValue( float value )
 {
   for( int i = 1; i < arraySize; i++ )
   {
@@ -48,7 +48,7 @@ void FloatArrayManager::insertValue( float value )
 /**
  * Set the value at a specific index.
  */
-void FloatArrayManager::setValue( int index, float value )
+void ArrayManager::setValue( int index, float value )
 {
   if( index >= 0 && index < arraySize )
   {
@@ -60,7 +60,7 @@ void FloatArrayManager::setValue( int index, float value )
 /**
  * Function to get the average value in the array.
  */
-float FloatArrayManager::getAverage()
+float ArrayManager::getAverage()
 {
   float sum = 0.0;
   for( int i = 0; i < arraySize; i++ )
@@ -74,7 +74,7 @@ float FloatArrayManager::getAverage()
 /**
  * Function to get the maximum value in the array.
  */
-float FloatArrayManager::getMax()
+float ArrayManager::getMax()
 {
   float maxValue = arrayValues[0];
   for( int i = 1; i < arraySize; i++ )
@@ -91,7 +91,7 @@ float FloatArrayManager::getMax()
 /**
  * Function to get the minimum value in the array.
  */
-float FloatArrayManager::getMin()
+float ArrayManager::getMin()
 {
   float minValue = arrayValues[0];
   for( int i = 1; i < arraySize; i++ )
@@ -109,7 +109,7 @@ float FloatArrayManager::getMin()
  * Return the array of values.
  * Use this when you want to do your own toString() or manual data manipulation.
  */
-float[] FloatArrayManager::getArray()
+float[] ArrayManager::getArray()
 {
   return arrayValues;
 }
@@ -118,7 +118,7 @@ float[] FloatArrayManager::getArray()
 /**
  * Function to print each value in the array after its index.
  */
-void FloatArrayManager::printValues()
+void ArrayManager::printValues()
 {
   for( int i = 0; i < arraySize; i++ )
   {
@@ -131,7 +131,7 @@ void FloatArrayManager::printValues()
  * Return the array as a string.
  * @return the values of the array in a String.
  */
-String FloatArrayManager::toString()
+String ArrayManager::toString()
 {
   String returnString = String();
   returnString += "[";
