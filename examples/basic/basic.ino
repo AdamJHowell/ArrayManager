@@ -1,6 +1,8 @@
 #include "FloatArrayManager.h"
 
+
 FloatArrayManager humidityArray( 5 );
+
 
 void setup()
 {
@@ -13,6 +15,7 @@ void setup()
   Serial.println( humidityArray.getAverage() );
   Serial.println( humidityArray.getMax() );
 }
+
 
 void loop()
 {

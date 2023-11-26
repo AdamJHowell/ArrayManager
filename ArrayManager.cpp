@@ -58,6 +58,23 @@ void ArrayManager::setValue( int index, float value )
 
 
 /**
+ * Function to get the minimum value in the array.
+ */
+float ArrayManager::getMin()
+{
+  float minValue = arrayValues[0];
+  for( int i = 1; i < arraySize; i++ )
+  {
+    if( arrayValues[i] < minValue )
+    {
+      minValue = arrayValues[i];
+    }
+  }
+  return minValue;
+}
+
+
+/**
  * Function to get the average value in the array.
  */
 float ArrayManager::getAverage()
@@ -89,25 +106,9 @@ float ArrayManager::getMax()
 
 
 /**
- * Function to get the minimum value in the array.
- */
-float ArrayManager::getMin()
-{
-  float minValue = arrayValues[0];
-  for( int i = 1; i < arraySize; i++ )
-  {
-    if( arrayValues[i] < minValue )
-    {
-      minValue = arrayValues[i];
-    }
-  }
-  return minValue;
-}
-
-
-/**
  * Return the array of values.
  * Use this when you want to do your own toString() or manual data manipulation.
+ * @return the array of values.
  */
 float[] ArrayManager::getArray()
 {

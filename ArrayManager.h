@@ -20,9 +20,9 @@ public:
   ~ArrayManager();
   void insertValue( float value );
   void setValue( int index, float value );
+  float getMin();
   float getAverage();
   float getMax();
-  float getMin();
   float[] getArray();
   void printValues();
   String toString();
