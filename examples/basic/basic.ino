@@ -1,7 +1,7 @@
-#include "FloatArrayManager.h"
+#include "ArrayManager.h"
 
 
-FloatArrayManager humidityArray( 5 );
+ArrayManager humidityArray( 5 );
 
 
 void setup()
