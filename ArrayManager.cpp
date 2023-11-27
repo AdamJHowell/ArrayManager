@@ -13,12 +13,10 @@
  * Constructor.
  * @param size the number of elements the array should hold.
  */
-ArrayManager::ArrayManager( int size )
+ArrayManager::ArrayManager( int size ) : arraySize( size )
 {
-  arraySize = size;
   arrayValues = new float[arraySize];
 }
-
 
 /**
  * Destructor to free the allocated memory.
@@ -26,6 +24,16 @@ ArrayManager::ArrayManager( int size )
 ArrayManager::~ArrayManager()
 {
   delete[] arrayValues;
+}
+
+
+/**
+ * Function to get the size of the value array.
+ * @return the size of the value array.
+ */
+int ArrayManager::getSize()
+{
+  return arraySize;
 }
 
 
@@ -54,6 +62,24 @@ void ArrayManager::setValue( int index, float value )
   {
     arrayValues[index] = value;
   }
+}
+
+
+/**
+ * Function to get the median value in the array.
+ * @return
+ */
+float ArrayManager::getMedian()
+{
+  float *sortedArray = new float[arraySize];
+  for( int i = 0; i < arraySize; ++i )
+  {
+    sortedArray[i] = arrayValues[i];
+  }
+  bubbleSort( sortedArray, arraySize );
+  float median = sortedArray[arraySize / 2];
+  delete[] sortedArray;
+  return median;
 }
 
 
@@ -110,7 +136,7 @@ float ArrayManager::getMax()
  * Use this when you want to do your own toString() or manual data manipulation.
  * @return the array of values.
  */
-float[] ArrayManager::getArray()
+float *ArrayManager::getArray()
 {
   return arrayValues;
 }
@@ -140,10 +166,35 @@ String ArrayManager::toString()
   for( int i = 0; i < arraySize; ++i )
   {
     if( subsequent )
-      returnString += ", "
+      returnString += ", ";
     returnString += arrayValues[i];
     subsequent = true;
   }
   returnString += "]";
   return returnString;
+}
+
+
+/**
+ * A simple function to swap two array values by manipulating their pointers.
+ * @param xp the first value to swap.
+ * @param yp the second value to swap.
+ */
+void ArrayManager::swap( float *xp, float *yp )
+{
+  float temp = *xp;
+  *xp = *yp;
+  *yp = temp;
+}
+
+
+/**
+ * A simple implementation of a bubble sort that sorts the array in-place.
+ */
+void ArrayManager::bubbleSort( float array[], int size )
+{
+  for( int i = 0; i < size - 1; i++ )
+    for( int j = 0; j < size - i - 1; j++ )
+      if( array[j] > array[j + 1] )
+        swap( &array[j], &array[j + 1] );
 }

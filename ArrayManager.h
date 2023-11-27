@@ -18,14 +18,18 @@ private:
 public:
   explicit ArrayManager( int size );
   ~ArrayManager();
+  int getSize();
   void insertValue( float value );
   void setValue( int index, float value );
   float getMin();
   float getAverage();
+  float getMedian();
   float getMax();
-  float[] getArray();
+  float* getArray();
   void printValues();
   String toString();
+  static void swap( float *xp, float *yp );
+  static void bubbleSort( float array[], int size );
 };
 
 #endif // ARRAYMANAGER_H
