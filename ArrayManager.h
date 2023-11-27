@@ -1,7 +1,12 @@
 #ifndef ARRAYMANAGER_H
 #define ARRAYMANAGER_H
 
+#ifdef ESP32
 #include <Arduino.h>
+#else
+#include <cstdlib>
+#include <cstdio>
+#endif // ESP32
 
 /**
  * ArrayManager is a class meant to help averaging values.
@@ -21,13 +26,11 @@ public:
   int getSize();
   void insertValue( float value );
   void setValue( int index, float value );
-  float getMin();
-  float getAverage();
+  float getMin() const;
+  float getAverage() const;
   float getMedian();
-  float getMax();
+  float getMax() const;
   float* getArray();
-  void printValues();
-  String toString();
   static void swap( float *xp, float *yp );
   static void bubbleSort( float array[], int size );
 };

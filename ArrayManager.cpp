@@ -86,7 +86,7 @@ float ArrayManager::getMedian()
 /**
  * Function to get the minimum value in the array.
  */
-float ArrayManager::getMin()
+float ArrayManager::getMin() const
 {
   float minValue = arrayValues[0];
   for( int i = 1; i < arraySize; i++ )
@@ -103,7 +103,7 @@ float ArrayManager::getMin()
 /**
  * Function to get the average value in the array.
  */
-float ArrayManager::getAverage()
+float ArrayManager::getAverage() const
 {
   float sum = 0.0;
   for( int i = 0; i < arraySize; i++ )
@@ -117,7 +117,7 @@ float ArrayManager::getAverage()
 /**
  * Function to get the maximum value in the array.
  */
-float ArrayManager::getMax()
+float ArrayManager::getMax() const
 {
   float maxValue = arrayValues[0];
   for( int i = 1; i < arraySize; i++ )
@@ -139,39 +139,6 @@ float ArrayManager::getMax()
 float *ArrayManager::getArray()
 {
   return arrayValues;
-}
-
-
-/**
- * Function to print each value in the array after its index.
- */
-void ArrayManager::printValues()
-{
-  for( int i = 0; i < arraySize; i++ )
-  {
-    Serial.printf( "%d: %f\n", i, arrayValues[i] );
-  }
-}
-
-
-/**
- * Return the array as a string.
- * @return the values of the array in a String.
- */
-String ArrayManager::toString()
-{
-  String returnString = String();
-  returnString += "[";
-  bool subsequent = false;
-  for( int i = 0; i < arraySize; ++i )
-  {
-    if( subsequent )
-      returnString += ", ";
-    returnString += arrayValues[i];
-    subsequent = true;
-  }
-  returnString += "]";
-  return returnString;
 }
 
 
